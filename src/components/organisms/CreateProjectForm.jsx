@@ -4,10 +4,11 @@ import FormField from "@/components/molecules/FormField";
 import ApperIcon from "@/components/ApperIcon";
 
 const CreateProjectForm = ({ onSubmit, onCancel }) => {
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
     title: "",
     description: "",
-    color: "#5B6CFF"
+    color: "#5B6CFF",
+    assignee: ""
   });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -74,13 +75,28 @@ const CreateProjectForm = ({ onSubmit, onCancel }) => {
           required
         />
 
-        <FormField
+<FormField
           label="Description"
           type="textarea"
           value={formData.description}
           onChange={(e) => handleChange("description", e.target.value)}
           placeholder="Describe your project..."
           rows={3}
+        />
+
+        <FormField
+          label="Assignee"
+          type="select"
+          value={formData.assignee}
+          onChange={(e) => handleChange("assignee", e.target.value)}
+          placeholder="Select assignee..."
+          options={[
+            { value: "", label: "Select assignee..." },
+            { value: "john-doe", label: "John Doe" },
+            { value: "jane-smith", label: "Jane Smith" },
+            { value: "mike-johnson", label: "Mike Johnson" },
+            { value: "sarah-wilson", label: "Sarah Wilson" }
+          ]}
         />
 
         <div className="space-y-2">
