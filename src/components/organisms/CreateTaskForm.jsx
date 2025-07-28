@@ -3,8 +3,8 @@ import Button from "@/components/atoms/Button";
 import FormField from "@/components/molecules/FormField";
 import PrioritySelect from "@/components/molecules/PrioritySelect";
 import StatusSelect from "@/components/molecules/StatusSelect";
+import AssigneeSelect from "@/components/molecules/AssigneeSelect";
 import ApperIcon from "@/components/ApperIcon";
-
 const CreateTaskForm = ({ initialStatus = "todo", onSubmit, onCancel }) => {
 const [formData, setFormData] = useState({
     title: "",
@@ -101,19 +101,10 @@ const [formData, setFormData] = useState({
           onChange={(e) => handleChange("dueDate", e.target.value)}
         />
 
-        <FormField
-          label="Assignee"
-          type="select"
+<AssigneeSelect
           value={formData.assignee}
-          onChange={(e) => handleChange("assignee", e.target.value)}
-          options={[
-            { value: "", label: "Unassigned" },
-            { value: "john-doe", label: "John Doe" },
-            { value: "jane-smith", label: "Jane Smith" },
-            { value: "mike-johnson", label: "Mike Johnson" },
-            { value: "sarah-wilson", label: "Sarah Wilson" },
-            { value: "david-brown", label: "David Brown" }
-          ]}
+          onChange={(value) => handleChange("assignee", value)}
+          className="w-full"
         />
 
         <div className="flex items-center justify-end space-x-3 pt-4 border-t border-gray-100">

@@ -47,11 +47,8 @@ const Header = ({ onMenuClick, onSearch, selectedProject }) => {
                 placeholder="Search tasks and projects..."
                 onSearch={handleSearch}
                 value={searchQuery}
-              />
+/>
             </div>
-            
-
-            {/* Mobile create button */}
           </div>
         </div>
 
