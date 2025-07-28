@@ -37,17 +37,20 @@ const BoardView = () => {
     }
   };
 
-  const handleCreateProject = async (projectData) => {
-    try {
-      const newProject = await projectService.create(projectData);
-      setSelectedProject(newProject);
-      setShowCreateProject(false);
-      toast.success("Project created successfully!");
-    } catch (err) {
-      toast.error("Failed to create project");
-      console.error("Error creating project:", err);
-    }
-  };
+const handleCreateProject = async (projectData) => {
+  try {
+    const newProject = await projectService.create(projectData);
+    setSelectedProject(newProject);
+    setShowCreateProject(false);
+    toast.success("Project created successfully!");
+    
+    // Reload projects to show the newly created project
+    await loadInitialData();
+  } catch (err) {
+    toast.error("Failed to create project");
+    console.error("Error creating project:", err);
+  }
+};
 
   const handleProjectSelect = (project) => {
     setSelectedProject(project);

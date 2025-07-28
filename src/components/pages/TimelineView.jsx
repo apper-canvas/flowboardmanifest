@@ -62,17 +62,20 @@ const TimelineView = () => {
     }
   }
 
-  async function handleCreateProject(projectData) {
-    try {
-      const newProject = await projectService.create(projectData);
-      setProjects(prev => [...prev, newProject]);
-      setSelectedProject(newProject);
-      setShowCreateProject(false);
-      toast.success("Project created successfully!");
-    } catch (err) {
-      toast.error("Failed to create project");
-    }
+async function handleCreateProject(projectData) {
+  try {
+    const newProject = await projectService.create(projectData);
+    
+    // Add new project to the projects list for immediate UI update
+    setProjects(prev => [...prev, newProject]);
+    setSelectedProject(newProject);
+    setShowCreateProject(false);
+    toast.success("Project created successfully!");
+  } catch (err) {
+    toast.error("Failed to create project");
+    console.error("Error creating project:", err);
   }
+}
 
   function handleProjectSelect(project) {
     setSelectedProject(project);
