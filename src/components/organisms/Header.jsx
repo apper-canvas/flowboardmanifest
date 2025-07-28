@@ -1,9 +1,8 @@
 import { useState } from "react";
 import ApperIcon from "@/components/ApperIcon";
-import Button from "@/components/atoms/Button";
 import SearchBar from "@/components/molecules/SearchBar";
 
-const Header = ({ onMenuClick, onSearch, onCreateProject, selectedProject }) => {
+const Header = ({ onMenuClick, onSearch, selectedProject }) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = (query) => {
@@ -51,24 +50,8 @@ const Header = ({ onMenuClick, onSearch, onCreateProject, selectedProject }) => 
               />
             </div>
             
-            <Button
-              onClick={onCreateProject}
-              variant="primary"
-              icon="Plus"
-              size="sm"
-              className="hidden sm:inline-flex"
-            >
-              New Project
-            </Button>
 
             {/* Mobile create button */}
-            <Button
-              onClick={onCreateProject}
-              variant="primary"
-              icon="Plus"
-              size="sm"
-              className="sm:hidden"
-            />
           </div>
         </div>
 
