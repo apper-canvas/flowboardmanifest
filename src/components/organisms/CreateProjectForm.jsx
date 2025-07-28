@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import Button from "@/components/atoms/Button";
 import FormField from "@/components/molecules/FormField";
 import ApperIcon from "@/components/ApperIcon";
-
+import CreateAssigneeForm from "@/components/organisms/CreateAssigneeForm";
+import { assigneeService } from "@/services/api/assigneeService";
 const CreateProjectForm = ({ onSubmit, onCancel }) => {
 const [formData, setFormData] = useState({
     title: "",
@@ -12,6 +14,24 @@ const [formData, setFormData] = useState({
   });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const [assignees, setAssignees] = useState([]);
+  const [assigneeLoading, setAssigneeLoading] = useState(true);
+  const [showAssigneeForm, setShowAssigneeForm] = useState(false);
+useEffect(() => {
+    loadAssignees();
+  }, []);
+
+  const loadAssignees = async () => {
+    try {
+      setAssigneeLoading(true);
+      const assigneeList = await assigneeService.getAll();
+      setAssignees(assigneeList);
+    } catch (error) {
+      toast.error("Failed to load assignees");
+    } finally {
+      setAssigneeLoading(false);
+    }
+  };
 
   const colorOptions = [
     "#5B6CFF", "#FF6B9D", "#2ECC71", "#F39C12", 
@@ -44,11 +64,21 @@ const [formData, setFormData] = useState({
     }
   };
 
-  const handleChange = (field, value) => {
+const handleChange = (field, value) => {
+    if (field === "assignee" && value === "add_new") {
+      setShowAssigneeForm(true);
+      return;
+    }
+    
     setFormData(prev => ({ ...prev, [field]: value }));
     if (errors[field]) {
       setErrors(prev => ({ ...prev, [field]: "" }));
     }
+  };
+
+  const handleAssigneeCreated = (newAssignee) => {
+    setAssignees(prev => [...prev, newAssignee]);
+    setFormData(prev => ({ ...prev, assignee: newAssignee.Id.toString() }));
   };
 
   return (
@@ -84,7 +114,7 @@ const [formData, setFormData] = useState({
           rows={3}
         />
 
-        <FormField
+<FormField
           label="Assignee"
           type="select"
           value={formData.assignee}
@@ -92,13 +122,14 @@ const [formData, setFormData] = useState({
           placeholder="Select assignee..."
           options={[
             { value: "", label: "Select assignee..." },
-            { value: "john-doe", label: "John Doe" },
-            { value: "jane-smith", label: "Jane Smith" },
-            { value: "mike-johnson", label: "Mike Johnson" },
-            { value: "sarah-wilson", label: "Sarah Wilson" }
+            ...assignees.map(assignee => ({
+              value: assignee.Id.toString(),
+              label: assignee.name
+            })),
+            { value: "add_new", label: "➕ Add New Assignee" }
           ]}
+          disabled={assigneeLoading}
         />
-
         <div className="space-y-2">
           <label className="block text-sm font-medium text-gray-700">
             Project Color
@@ -139,6 +170,11 @@ const [formData, setFormData] = useState({
           </Button>
         </div>
       </form>
+<CreateAssigneeForm
+        isOpen={showAssigneeForm}
+        onClose={() => setShowAssigneeForm(false)}
+        onAssigneeCreated={handleAssigneeCreated}
+      />
     </div>
   );
 };
