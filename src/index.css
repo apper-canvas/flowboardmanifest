@@ -1,0 +1,125 @@
+@import 'react-toastify/dist/ReactToastify.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #F5F7FA;
+  overflow-x: hidden;
+}
+
+/* Toast Customization */
+.Toastify__toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 400px;
+  z-index: 9999;
+}
+
+.Toastify__toast {
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  padding: 16px;
+  min-height: auto;
+}
+
+.Toastify__toast--success {
+  background: linear-gradient(135deg, #2ECC71, #27AE60);
+}
+
+.Toastify__toast--error {
+  background: linear-gradient(135deg, #E74C3C, #C0392B);
+}
+
+.Toastify__toast--info {
+  background: linear-gradient(135deg, #3498DB, #2980B9);
+}
+
+.Toastify__progress-bar {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Drag and Drop Styles */
+.dragging {
+  transform: rotate(5deg);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  z-index: 50;
+}
+
+.drag-over {
+  background: linear-gradient(135deg, #5B6CFF, #8B92FF);
+  transform: scale(1.02);
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Priority Badge Gradients */
+.priority-high {
+  background: linear-gradient(135deg, #FF6B9D, #E74C3C);
+}
+
+.priority-medium {
+  background: linear-gradient(135deg, #F39C12, #E67E22);
+}
+
+.priority-low {
+  background: linear-gradient(135deg, #3498DB, #2980B9);
+}

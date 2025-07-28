@@ -1,0 +1,34 @@
+[
+  {
+    "Id": 1,
+    "title": "Personal Website Redesign",
+    "description": "Complete overhaul of personal portfolio website with modern design and improved UX",
+    "color": "#5B6CFF",
+    "createdAt": "2024-01-15T10:00:00Z",
+    "archived": false
+  },
+  {
+    "Id": 2,
+    "title": "Mobile App Development",
+    "description": "Building a productivity mobile app for task management and goal tracking",
+    "color": "#FF6B9D",
+    "createdAt": "2024-01-20T14:30:00Z",
+    "archived": false
+  },
+  {
+    "Id": 3,
+    "title": "Content Marketing Strategy",
+    "description": "Develop comprehensive content strategy for Q2 including blog posts and social media",
+    "color": "#2ECC71",
+    "createdAt": "2024-02-01T09:15:00Z",
+    "archived": false
+  },
+  {
+    "Id": 4,
+    "title": "Learning React Native",
+    "description": "Complete React Native course and build three practice projects",
+    "color": "#F39C12",
+    "createdAt": "2023-12-10T16:45:00Z",
+    "archived": true
+  }
+]
