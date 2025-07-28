@@ -21,12 +21,13 @@ export const taskService = {
     return tasks.filter(t => t.projectId === parseInt(projectId)).map(t => ({ ...t }));
   },
 
-  async create(taskData) {
+async create(taskData) {
     await delay(400);
     const maxId = Math.max(...tasks.map(t => t.Id), 0);
     const newTask = {
       Id: maxId + 1,
       ...taskData,
+      assignee: taskData.assignee || "",
       createdAt: new Date().toISOString(),
       completedAt: null
     };
@@ -34,11 +35,15 @@ export const taskService = {
     return { ...newTask };
   },
 
-  async update(id, updates) {
+async update(id, updates) {
     await delay(350);
     const index = tasks.findIndex(t => t.Id === parseInt(id));
     if (index !== -1) {
-      const updatedTask = { ...tasks[index], ...updates };
+      const updatedTask = { 
+        ...tasks[index], 
+        ...updates,
+        assignee: updates.assignee !== undefined ? updates.assignee : tasks[index].assignee
+      };
       
       // Handle completion timestamp
       if (updates.status === "done" && tasks[index].status !== "done") {

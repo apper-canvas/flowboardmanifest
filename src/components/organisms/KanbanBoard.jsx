@@ -102,11 +102,12 @@ const KanbanBoard = ({ projectId, searchQuery }) => {
     }
   };
 
-  const handleCreateTask = async (taskData) => {
+const handleCreateTask = async (taskData) => {
     try {
       const newTask = await taskService.create({
         ...taskData,
-        projectId: parseInt(projectId)
+        projectId: parseInt(projectId),
+        assignee: taskData.assignee || ""
       });
       setTasks(prev => [...prev, newTask]);
       setShowCreateForm({ show: false, status: null });
@@ -117,9 +118,12 @@ const KanbanBoard = ({ projectId, searchQuery }) => {
     }
   };
 
-  const handleUpdateTask = async (taskId, updates) => {
+const handleUpdateTask = async (taskId, updates) => {
     try {
-      const updatedTask = await taskService.update(taskId, updates);
+      const updatedTask = await taskService.update(taskId, {
+        ...updates,
+        assignee: updates.assignee !== undefined ? updates.assignee : undefined
+      });
       setTasks(prev => prev.map(task => 
         task.Id === taskId ? updatedTask : task
       ));
@@ -223,7 +227,7 @@ const KanbanBoard = ({ projectId, searchQuery }) => {
                       exit={{ opacity: 0, y: -20 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <TaskCard
+<TaskCard
                         task={task}
                         onDragStart={handleDragStart}
                         onDragEnd={handleDragEnd}

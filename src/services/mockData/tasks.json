@@ -7,6 +7,7 @@
     "status": "done",
     "priority": "high",
     "dueDate": "2024-02-15",
+    "assignee": "jane-smith",
     "createdAt": "2024-01-15T10:30:00Z",
     "completedAt": "2024-02-10T14:20:00Z"
   },
@@ -18,6 +19,7 @@
     "status": "done",
     "priority": "medium",
     "dueDate": "2024-02-20",
+    "assignee": "john-doe",
     "createdAt": "2024-01-15T11:00:00Z",
     "completedAt": "2024-02-12T09:45:00Z"
   },
@@ -29,6 +31,7 @@
     "status": "in-progress",
     "priority": "high",
     "dueDate": "2024-03-01",
+    "assignee": "mike-johnson",
     "createdAt": "2024-01-16T09:15:00Z",
     "completedAt": null
   },
@@ -40,6 +43,7 @@
     "status": "todo",
     "priority": "medium",
     "dueDate": "2024-03-05",
+    "assignee": "",
     "createdAt": "2024-01-16T10:00:00Z",
     "completedAt": null
   },
@@ -51,6 +55,7 @@
     "status": "done",
     "priority": "high",
     "dueDate": "2024-02-10",
+    "assignee": "sarah-wilson",
     "createdAt": "2024-01-20T15:00:00Z",
     "completedAt": "2024-02-08T11:30:00Z"
   },
@@ -62,6 +67,7 @@
     "status": "in-progress",
     "priority": "high",
     "dueDate": "2024-02-25",
+    "assignee": "jane-smith",
     "createdAt": "2024-01-21T09:30:00Z",
     "completedAt": null
   },
@@ -73,6 +79,7 @@
     "status": "todo",
     "priority": "high",
     "dueDate": "2024-03-10",
+    "assignee": "david-brown",
     "createdAt": "2024-01-21T14:15:00Z",
     "completedAt": null
   },
@@ -84,6 +91,7 @@
     "status": "in-progress",
     "priority": "medium",
     "dueDate": "2024-02-28",
+    "assignee": "mike-johnson",
     "createdAt": "2024-02-01T10:00:00Z",
     "completedAt": null
   },
@@ -95,6 +103,7 @@
     "status": "todo",
     "priority": "high",
     "dueDate": "2024-03-15",
+    "assignee": "",
     "createdAt": "2024-02-01T11:30:00Z",
     "completedAt": null
   },
@@ -106,6 +115,7 @@
     "status": "done",
     "priority": "high",
     "dueDate": "2024-01-15",
+    "assignee": "john-doe",
     "createdAt": "2023-12-10T17:00:00Z",
     "completedAt": "2024-01-12T16:45:00Z"
   }

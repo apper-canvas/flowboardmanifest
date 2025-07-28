@@ -71,7 +71,7 @@ const TaskCard = ({ task, onDragStart, onDragEnd, onUpdate, onDelete }) => {
             </p>
           )}
 
-          <div className="flex items-center justify-between">
+<div className="flex items-center justify-between">
             <Badge variant={getPriorityVariant(task.priority)} className="text-xs">
               {task.priority}
             </Badge>
@@ -89,6 +89,28 @@ const TaskCard = ({ task, onDragStart, onDragEnd, onUpdate, onDelete }) => {
                 )}
               </div>
             )}
+          </div>
+          
+          {/* Assignee Section */}
+          <div className="flex items-center justify-between mt-3 pt-2 border-t border-gray-100">
+            <div className="flex items-center space-x-2">
+              <ApperIcon name="User" className="w-3 h-3 text-gray-400" />
+              <span className="text-xs text-gray-500">
+                {task.assignee ? (
+                  <span className="flex items-center space-x-1">
+                    <span className="text-xs">
+                      {task.assignee === 'john-doe' && '👨‍💻 John Doe'}
+                      {task.assignee === 'jane-smith' && '👩‍🎨 Jane Smith'}
+                      {task.assignee === 'mike-johnson' && '👨‍💼 Mike Johnson'}
+                      {task.assignee === 'sarah-wilson' && '👩‍💻 Sarah Wilson'}
+                      {task.assignee === 'david-brown' && '👨‍🔧 David Brown'}
+                    </span>
+                  </span>
+                ) : (
+                  <span className="text-gray-400">Unassigned</span>
+                )}
+              </span>
+            </div>
           </div>
         </div>
       </Card>
