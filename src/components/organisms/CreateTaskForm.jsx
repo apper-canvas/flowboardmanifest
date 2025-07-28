@@ -6,12 +6,13 @@ import StatusSelect from "@/components/molecules/StatusSelect";
 import ApperIcon from "@/components/ApperIcon";
 
 const CreateTaskForm = ({ initialStatus = "todo", onSubmit, onCancel }) => {
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
     title: "",
     description: "",
     status: initialStatus,
     priority: "medium",
-    dueDate: ""
+    dueDate: "",
+    assignee: ""
   });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -93,12 +94,26 @@ const CreateTaskForm = ({ initialStatus = "todo", onSubmit, onCancel }) => {
             onChange={(value) => handleChange("priority", value)}
           />
         </div>
-
-        <FormField
+<FormField
           label="Due Date"
           type="date"
           value={formData.dueDate}
           onChange={(e) => handleChange("dueDate", e.target.value)}
+        />
+
+        <FormField
+          label="Assignee"
+          type="select"
+          value={formData.assignee}
+          onChange={(e) => handleChange("assignee", e.target.value)}
+          options={[
+            { value: "", label: "Unassigned" },
+            { value: "john-doe", label: "John Doe" },
+            { value: "jane-smith", label: "Jane Smith" },
+            { value: "mike-johnson", label: "Mike Johnson" },
+            { value: "sarah-wilson", label: "Sarah Wilson" },
+            { value: "david-brown", label: "David Brown" }
+          ]}
         />
 
         <div className="flex items-center justify-end space-x-3 pt-4 border-t border-gray-100">
